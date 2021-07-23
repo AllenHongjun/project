@@ -1,16 +1,21 @@
 package com.how2java.pojo;
 
+import java.util.Set;
+
 public class Product {
 	int id;
 	String name;
 	float price;
 	Category category;
+	Set<User> users;
+	
+	
 	// 在产品表关联分类熟悉
 	public Category getCategory(){
 		return category;
 	}
 	
-	public void setCategory(){
+	public void setCategory(Category category){
 		this.category = category;
 	}
 	
@@ -35,6 +40,15 @@ public class Product {
 	
 	public void setPrice(float price){
 		this.price = price;
+	}
+	
+	
+	public Set<User> getUsers(){
+		return this.users;
+	}
+	
+	public void setUsers(Set<User> users){
+		this.users = users;
 	}
 }
 

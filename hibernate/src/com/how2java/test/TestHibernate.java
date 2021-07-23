@@ -1,6 +1,8 @@
 package com.how2java.test;
 
 import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -23,6 +25,87 @@ public class TestHibernate {
 		s.getTransaction().commit();
 		s.close();
 		sf.close();*/
+		
+		SessionFactory sf = new Configuration().configure().buildSessionFactory();
+		Session s = sf.openSession();
+		s.beginTransaction();
+		
+		
+		// 关系延迟加载
+		// 执行访问关系的数据的时候 才会查询关联表 不然 指挥查询product_表的数据。
+		// 虽然配置 有点麻烦 但是通过这个配置 能力理解的更加透彻一点。
+		Category c = (Category) s.get(Category.class, 1);
+		System.out.println("log");
+		System.out.println(c.getProducts());
+		System.out.println("log2");
+		
+		
+		
+		/*// 延迟加载 属性 和关系
+		// 在打印 log1 之前是不会打印sql语句的 只有访问属性 getName()才会访问数据库
+		// 开发项目 一定要注意文档 数据库 代码的 编码规范。不然项目真的是很难维护。 开发起来也会非常的困难。 业务也搞的非常的复杂
+		Product p = (Product) s.load(Product.class,1);
+		System.out.println("log1");
+		System.out.println(p.getName());
+		System.out.println("log2");*/
+		
+		
+		/*// 事务
+		
+		
+		Product p = (Product) s.get(Product.class, 1);
+		s.delete(p);
+		
+		Product p2 = (Product) s.get(Product.class, 2);
+		p2.setName("这是一个很长很长的名字，超过30个字符就无法保存这是一个很长很长的名字，超过30个字符就无法保存这是一个很长很长的名字，超过30个字符就无法保存这是一个很长很长的名字，超过30个字符就无法保存");
+		s.update(p2);*/
+		
+		
+		
+		/*// 新增加三个用户 EF里面几乎是不用什么来配置
+		// EF如何添加关联数据 多对多数据如何添加 保存 和删除。。操作。。？？
+		// 代码写完保存完之后 自动编译 也是挺好的功能。
+		Set<User> users = new HashSet();
+		for(int i = 0; i < 3; i++){
+			User u = new User();
+			u.setName("user" + i);
+			s.save(u);
+			
+			users.add(u);
+		}
+		
+		// 给产品的关联表添加三个用户的数据然后保存数据
+		Product p1 = (Product) s.get(Product.class, 1);
+		p1.setUsers(users);
+		s.save(p1);*/
+		
+		
+		
+		
+		/*// 1对多的关系使用
+		Category c = (Category) s.get(Category.class, 1);
+		Set<Product> ps = c.getProducts();
+		for(Product p : ps){
+			System.out.println(p.getName());
+		}*/
+		
+		
+		
+		/*// 建立关系会自动生成 数据表。
+		Category c = new Category();
+		c.setName("c1");
+		s.save(c);
+		// 将第8个产品的分类设置为 c1
+		Product p = (Product) s.get(Product.class, 8);
+		p.setCategory(c);
+		s.update(p);*/
+		
+		
+		
+		
+		s.getTransaction().commit();
+		s.close();
+		sf.close();
 		
 		
 		/*// 使用 createSQLQuery 执行标准 SQL语句查询
