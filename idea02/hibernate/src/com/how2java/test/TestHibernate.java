@@ -34,10 +34,10 @@ public class TestHibernate {
 		// 关系延迟加载
 		// 执行访问关系的数据的时候 才会查询关联表 不然 指挥查询product_表的数据。
 		// 虽然配置 有点麻烦 但是通过这个配置 能力理解的更加透彻一点。
-		Category c = (Category) s.get(Category.class, 1);
-		System.out.println("log");
-		System.out.println(c.getProducts());
-		System.out.println("log2");
+//		Category c = (Category) s.get(Category.class, 1);
+//		System.out.println("log");
+//		System.out.println(c.getProducts());
+//		System.out.println("log2");
 		
 		
 		
@@ -82,8 +82,8 @@ public class TestHibernate {
 		
 		
 		
-		/*// 1对多的关系使用
-		Category c = (Category) s.get(Category.class, 1);
+		// 1对多的关系使用
+		/*Category c = (Category) s.get(Category.class, 1);
 		Set<Product> ps = c.getProducts();
 		for(Product p : ps){
 			System.out.println(p.getName());
