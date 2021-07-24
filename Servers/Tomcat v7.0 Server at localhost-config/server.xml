@@ -32,7 +32,7 @@
 		
        <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log." suffix=".txt"/>
 
-      <Context docBase="j2ee" path="/j2ee" reloadable="true" source="org.eclipse.jst.jee.server:j2ee"/></Host>
+      <Context docBase="j2ee" path="/j2ee" reloadable="true" source="org.eclipse.jst.jee.server:j2ee"/><Context docBase="structs" path="/structs" reloadable="true" source="org.eclipse.jst.jee.server:structs"/></Host>
     </Engine>
   </Service>
 </Server>
