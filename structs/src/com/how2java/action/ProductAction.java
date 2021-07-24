@@ -1,16 +1,31 @@
 package com.how2java.action;
 
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.ServletActionContext;
+
 // ctrl shift m 快速引入命名空间 多掌握一些快捷键 能大大提高开发效率
 // struts 配置文件名称写错。。肯定是配置写错 文件名称写错。
 // 解决方法 就是 导入demo调试 比较错误的地方。
 // 实在比较不出来 就使用他的demo 来继续走其他的步骤 先学习 这个是xiaxia 策略
 // 所以一定要仔细。。这个都是很严格的。。先导入demo 看看 也很重要 文件目录结构什么的 能够看出来。
 import com.how2java.bean.Product;
+import com.opensymphony.xwork2.ActionContext;
 
 public class ProductAction {
 	private Product product;
 	
 	public String show(){
+		
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpServletResponse response = ServletActionContext.getResponse();
+		System.out.println("request:\t" + request);
+		System.out.println("response:\t" + response);
+		
+		
 		product = new Product();
 		product.setName("iphone12");
 		return "show";
@@ -31,6 +46,9 @@ public class ProductAction {
 	
 	public String add(){
 		System.out.println("product.name:" + product.getName());
+		
+		Map m = ActionContext.getContext().getSession();
+		m.put("name", product.getName());
 		return "show";
 	}
 	
