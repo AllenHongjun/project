@@ -1,39 +1,39 @@
-// Éè¼ÆÒ»¸ölolµÄÓ¢ĞÛ
+// è®¾è®¡ä¸€ä¸ªlolçš„è‹±é›„
 /*
- * ¸´Ï°Ò»Ğ©»ù´¡ÖªÊ¶
- * Ìæ»»Ò»¸ö¹¤¾ßµÄÊ¹ÓÃ¡£
- * Í¬Ê±Ò²ÊÇÕÆÎÕÒ»¸öĞÂµÄ¼¼ÄÜ¡£Í¬Ê±Ò²ÊÇÇÃ´úÂëÊìÏ¤
+ * å¤ä¹ ä¸€äº›åŸºç¡€çŸ¥è¯†
+ * æ›¿æ¢ä¸€ä¸ªå·¥å…·çš„ä½¿ç”¨ã€‚
+ * åŒæ—¶ä¹Ÿæ˜¯æŒæ¡ä¸€ä¸ªæ–°çš„æŠ€èƒ½ã€‚åŒæ—¶ä¹Ÿæ˜¯æ•²ä»£ç ç†Ÿæ‚‰
  * */
 public class Hero {
-	// ĞÕÃû
+	// å§“å
 	String name;
 	
-	// ÑªÁ¿
+	// è¡€é‡
 	float hp;
 	
-	// »¤¼×
+	// æŠ¤ç”²
 	float armor;
 	
-	// ÒÆ¶¯ËÙ¶È
+	// ç§»åŠ¨é€Ÿåº¦
 	int moveSpeed;
 	
-	// »ñÈ¡»¤¼×
+	// è·å–æŠ¤ç”²
 	float getArmor(){
 		return armor;
 	}
 	
-	// ¿Ó¶ÓÓÑ
+	// å‘é˜Ÿå‹
 	void keng(){
-		System.out.println("¿ªÊ¼¿Ó¶ÓÓÑ!");
+		System.out.println("å¼€å§‹å‘é˜Ÿå‹!");
 	}
 	
-	// Ôö¼ÓÒÆ¶¯ËÙ¶È
+	// å¢åŠ ç§»åŠ¨é€Ÿåº¦
 	void addSpeed(int speed){
-		// Ôö¼ÓÒÆ¶¯ËÙ¶È
+		// å¢åŠ ç§»åŠ¨é€Ÿåº¦
 		moveSpeed = moveSpeed + speed;
 	}
 	
-	// ³¬Éñ
+	// è¶…ç¥
 	void legendary(){
 		
 	}
@@ -48,13 +48,13 @@ public class Hero {
 	
 	public static void main(String[] args) {
 		Hero garen = new Hero();
-		garen.name = "¸ÇÂ×";
+		garen.name = "ç›–ä¼¦";
 		garen.hp = 616.28f;
 		garen.armor = 27.536f;
 		garen.moveSpeed = 350;
 		
 		Hero teemo = new Hero();
-		teemo.name = "ÌáÄª";
+		teemo.name = "æè«";
 		teemo.hp = 383f;
 		teemo.armor = 14f;
 		teemo.moveSpeed = 330;
