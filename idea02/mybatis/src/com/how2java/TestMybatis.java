@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.io.InputStream;
 
 // alt + Enter 也可以引入包名
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.how2java.pojo.Category;
 import org.apache.ibatis.io.Resources;
@@ -17,7 +19,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 /**
  * @Author hongjy
  * @Date 2021/7/24
- * @Description
+ * @Description mybatis 轻量级的ORM框架
  **/
 public class TestMybatis {
     public static void main(String[] args) throws IOException {
@@ -26,7 +28,22 @@ public class TestMybatis {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession session = sqlSessionFactory.openSession();
 
+        /*// 模糊查询的使用  这个代码需要写规范 写清楚。以后项目中遇到问题。还是可以参考和学习的
+        // 比如开发项目 遇到不会的点。你怎么办。你肯定要参考 要复制粘贴 要使用。。有地方参考。使用。就能效率开发。
+        Map<String,Object> params = new HashMap<>();
+        params.put("id", 0);
+        params.put("name", "cate");
 
+        List<Category> cs = session.selectList("listCategoryByIdAndName", params);
+        for (Category c : cs){
+            System.out.println(c.getName());
+        }*/
+
+       /* // 模糊查询的使用
+        List<Category> cs = session.selectList("listCategoryByName", "cate");
+        for (Category c : cs){
+            System.out.println(c.getName());
+        }*/
 
 
         /*// 修改一个分类  注意sql 语句里面 #要写在分类的变量名称外面
@@ -53,7 +70,7 @@ public class TestMybatis {
         c.setName("肉类2");
         session.insert("addCategory",c);*/
 
-        listAll(session);
+//        listAll(session);
         session.commit();
         session.close();
 
